@@ -270,11 +270,214 @@ const aiFeatures = [
   },
 ] as const;
 
-const allFeatures = [...features, ...aiFeatures];
+const supplementalFeatures = [
+  {
+    slug: "scenario-library",
+    title: "Scenario Library",
+    href: "/scenario-library",
+    category: "Quality",
+    icon: ShieldCheck,
+    summary: "Scenario Library workspace for quality review, failure analysis, corrective actions, acceptance evidence, and release gates in Enterprise Agent Testing Sandbox.",
+    bullets: ["Scenario Library queue","Subfeature work items","Audit-ready output"],
+    metrics: [
+      { label: "Scenario Library", value: "90", note: 'Active records' },
+      { label: 'Exceptions', value: "3", note: 'Need review' },
+      { label: 'Due Soon', value: "5", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "regression-suites",
+    title: "Regression Suites",
+    href: "/regression-suites",
+    category: "Quality",
+    icon: Workflow,
+    summary: "Regression Suites workspace for quality review, failure analysis, corrective actions, acceptance evidence, and release gates in Enterprise Agent Testing Sandbox.",
+    bullets: ["Regression Suites queue","Subfeature work items","Audit-ready output"],
+    metrics: [
+      { label: "Regression Suites", value: "99", note: 'Active records' },
+      { label: 'Exceptions', value: "4", note: 'Need review' },
+      { label: 'Due Soon', value: "6", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "red-team-runs",
+    title: "Red Team Runs",
+    href: "/red-team-runs",
+    category: "Risk",
+    icon: BarChart3,
+    summary: "Red Team Runs workspace for risk scoring, exception review, mitigation tracking, escalation ownership, and trend analytics in Enterprise Agent Testing Sandbox.",
+    bullets: ["Red Team Runs queue","Subfeature work items","Audit-ready output"],
+    metrics: [
+      { label: "Red Team Runs", value: "108", note: 'Active records' },
+      { label: 'Exceptions', value: "5", note: 'Need review' },
+      { label: 'Due Soon', value: "7", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "golden-dataset-manager",
+    title: "Golden Dataset Manager",
+    href: "/golden-dataset-manager",
+    category: "Quality",
+    icon: ClipboardList,
+    summary: "Golden Dataset Manager workspace for quality review, failure analysis, corrective actions, acceptance evidence, and release gates in Enterprise Agent Testing Sandbox.",
+    bullets: ["Golden Dataset Manager queue","Subfeature work items","Audit-ready output"],
+    metrics: [
+      { label: "Golden Dataset Manager", value: "117", note: 'Active records' },
+      { label: 'Exceptions', value: "6", note: 'Need review' },
+      { label: 'Due Soon', value: "8", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "evaluation-rubric-builder",
+    title: "Evaluation Rubric Builder",
+    href: "/evaluation-rubric-builder",
+    category: "Governance",
+    icon: CalendarCheck,
+    summary: "Evaluation Rubric Builder workspace for approval routing, policy controls, ownership, exceptions, audit evidence, and management signoff in Enterprise Agent Testing Sandbox.",
+    bullets: ["Evaluation Rubric Builder queue","Subfeature work items","Audit-ready output"],
+    metrics: [
+      { label: "Evaluation Rubric Builder", value: "126", note: 'Active records' },
+      { label: 'Exceptions', value: "7", note: 'Need review' },
+      { label: 'Due Soon', value: "9", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "release-gates",
+    title: "Release Gates",
+    href: "/release-gates",
+    category: "Governance",
+    icon: PackageCheck,
+    summary: "Release Gates workspace for approval routing, policy controls, ownership, exceptions, audit evidence, and management signoff in Enterprise Agent Testing Sandbox.",
+    bullets: ["Release Gates queue","Subfeature work items","Audit-ready output"],
+    metrics: [
+      { label: "Release Gates", value: "135", note: 'Active records' },
+      { label: 'Exceptions', value: "3", note: 'Need review' },
+      { label: 'Due Soon', value: "10", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "failure-replay-lab",
+    title: "Failure Replay Lab",
+    href: "/failure-replay-lab",
+    category: "Reliability",
+    icon: Activity,
+    summary: "Failure Replay Lab workspace for reliability signals, incident review, root cause, corrective actions, and operational readiness in Enterprise Agent Testing Sandbox.",
+    bullets: ["Failure Replay Lab queue","Subfeature work items","Audit-ready output"],
+    metrics: [
+      { label: "Failure Replay Lab", value: "144", note: 'Active records' },
+      { label: 'Exceptions', value: "4", note: 'Need review' },
+      { label: 'Due Soon', value: "11", note: 'Next 14 days' },
+    ],
+  }
+] as const;
+
+const productionPlatformFeatures = [
+  {
+    slug: "enterprise-identity-access",
+    title: "Enterprise Identity & Access",
+    href: "/enterprise-identity-access",
+    category: "Production Platform",
+    icon: ShieldCheck,
+    summary: "Enterprise Identity & Access workspace for domain workflows, approvals, evidence, and reporting in Enterprise Agent Testing Sandbox.",
+    bullets: ["Production controls","Evidence tracking","Launch readiness"],
+    metrics: [
+      { label: "Enterprise Identity & Access", value: "90", note: 'Active records' },
+      { label: 'Exceptions', value: "3", note: 'Need review' },
+      { label: 'Due Soon', value: "5", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "connector-operations-center",
+    title: "Connector Operations Center",
+    href: "/connector-operations-center",
+    category: "Production Platform",
+    icon: Workflow,
+    summary: "Connector Operations Center workspace for domain workflows, approvals, evidence, and reporting in Enterprise Agent Testing Sandbox.",
+    bullets: ["Production controls","Evidence tracking","Launch readiness"],
+    metrics: [
+      { label: "Connector Operations Center", value: "99", note: 'Active records' },
+      { label: 'Exceptions', value: "4", note: 'Need review' },
+      { label: 'Due Soon', value: "6", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "audit-export-center",
+    title: "Audit Export Center",
+    href: "/audit-export-center",
+    category: "Production Platform",
+    icon: BarChart3,
+    summary: "Audit Export Center workspace for domain workflows, approvals, evidence, and reporting in Enterprise Agent Testing Sandbox.",
+    bullets: ["Production controls","Evidence tracking","Launch readiness"],
+    metrics: [
+      { label: "Audit Export Center", value: "108", note: 'Active records' },
+      { label: 'Exceptions', value: "5", note: 'Need review' },
+      { label: 'Due Soon', value: "7", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "notification-delivery-ledger",
+    title: "Notification Delivery Ledger",
+    href: "/notification-delivery-ledger",
+    category: "Production Platform",
+    icon: ClipboardList,
+    summary: "Notification Delivery Ledger workspace for domain workflows, approvals, evidence, and reporting in Enterprise Agent Testing Sandbox.",
+    bullets: ["Production controls","Evidence tracking","Launch readiness"],
+    metrics: [
+      { label: "Notification Delivery Ledger", value: "117", note: 'Active records' },
+      { label: 'Exceptions', value: "6", note: 'Need review' },
+      { label: 'Due Soon', value: "8", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "observability-runbooks",
+    title: "Observability & Runbooks",
+    href: "/observability-runbooks",
+    category: "Production Platform",
+    icon: CalendarCheck,
+    summary: "Observability & Runbooks workspace for domain workflows, approvals, evidence, and reporting in Enterprise Agent Testing Sandbox.",
+    bullets: ["Production controls","Evidence tracking","Launch readiness"],
+    metrics: [
+      { label: "Observability & Runbooks", value: "126", note: 'Active records' },
+      { label: 'Exceptions', value: "7", note: 'Need review' },
+      { label: 'Due Soon', value: "9", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "release-test-harness",
+    title: "Release Test Harness",
+    href: "/release-test-harness",
+    category: "Production Platform",
+    icon: PackageCheck,
+    summary: "Release Test Harness workspace for domain workflows, approvals, evidence, and reporting in Enterprise Agent Testing Sandbox.",
+    bullets: ["Production controls","Evidence tracking","Launch readiness"],
+    metrics: [
+      { label: "Release Test Harness", value: "135", note: 'Active records' },
+      { label: 'Exceptions', value: "3", note: 'Need review' },
+      { label: 'Due Soon', value: "10", note: 'Next 14 days' },
+    ],
+  },
+  {
+    slug: "production-gap-workspace",
+    title: "Production Gap Workspace",
+    href: "/production-gap-workspace",
+    category: "Production Platform",
+    icon: Activity,
+    summary: "Production Gap Workspace workspace for domain workflows, approvals, evidence, and reporting in Enterprise Agent Testing Sandbox.",
+    bullets: ["Production controls","Evidence tracking","Launch readiness"],
+    metrics: [
+      { label: "Production Gap Workspace", value: "144", note: 'Active records' },
+      { label: 'Exceptions', value: "4", note: 'Need review' },
+      { label: 'Due Soon', value: "11", note: 'Next 14 days' },
+    ],
+  }
+] as const;
+
+const allFeatures = [...features, ...supplementalFeatures, ...productionPlatformFeatures, ...aiFeatures];
 
 export const primaryNav: NavItem[] = [
   { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { label: 'All Features', href: '/features', icon: Blocks },
+  { label: 'Production Readiness', href: '/production-readiness', icon: ShieldCheck },
   { label: 'Documents', href: '/documents', icon: Files },
   { label: 'Source Tables', href: '/source-tables', icon: Database },
   { label: 'Profiles', href: '/profiles', icon: UserRound },
@@ -284,6 +487,8 @@ export const featureNav: NavItem[] = allFeatures.map((feature) => ({ label: feat
 export const featureCatalog: FeatureDefinition[] = allFeatures.map((feature) => ({ title: feature.title, href: feature.href, category: feature.category, summary: feature.summary, bullets: [...feature.bullets] }));
 
 export const featureFamilies = [
+  { name: 'Production Platform Controls', features: ['Enterprise Identity & Access', 'Connector Operations Center', 'Audit Export Center', 'Notification Delivery Ledger', 'Observability & Runbooks', 'Release Test Harness', 'Production Gap Workspace'] },
+  { name: "Agent Evaluation Controls", features: ["Scenario Library","Regression Suites","Red Team Runs","Golden Dataset Manager","Evaluation Rubric Builder","Release Gates","Failure Replay Lab"] },
   {
     "name": "Testing",
     "features": [
@@ -369,7 +574,7 @@ function toPage(feature: (typeof allFeatures)[number]): PageDefinition {
   };
 }
 
-export const pageRegistry: Record<string, PageDefinition> = Object.fromEntries(features.map((feature) => [feature.slug, toPage(feature)]));
+export const pageRegistry: Record<string, PageDefinition> = Object.fromEntries([...features, ...supplementalFeatures, ...productionPlatformFeatures].map((feature) => [feature.slug, toPage(feature)]));
 export const aiFeatureRegistry: Record<string, PageDefinition> = Object.fromEntries(aiFeatures.map((feature) => [feature.slug, toPage(feature)]));
 export const featureContexts: Record<string, FeatureContext> = Object.fromEntries(
   allFeatures.map((feature) => [

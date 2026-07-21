@@ -2,7 +2,13 @@
   "name": "ai-enterprise-agent-testing-sandbox-backend",
   "version": "1.0.0",
   "private": true,
+  "dependencies": {
+    "pg": "^8.16.3"
+  },
   "scripts": {
+    "migrate": "node ../frontend/scripts/migrate.mjs",
+    "create-admin": "node ../frontend/scripts/create-admin.mjs",
+    "test": "node --test ../governance/governance.test.cjs",
     "typecheck": "cd ../frontend && npm run typecheck",
     "smoke": "cd ../frontend && npm run smoke",
     "dev": "cd ../frontend && npm run dev"

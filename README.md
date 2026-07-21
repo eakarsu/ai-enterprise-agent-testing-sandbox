@@ -22,4 +22,4 @@ cd ai-enterprise-agent-testing-sandbox/frontend
 npm run dev
 ```
 
-Demo login: `admin@agent-testing.local` / `admin123`
+Provision an administrator explicitly with `ADMIN_EMAIL` and `ADMIN_PASSWORD`; no credentials are embedded in application source.

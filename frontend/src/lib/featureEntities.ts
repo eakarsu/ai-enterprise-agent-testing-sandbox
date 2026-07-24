@@ -33,3 +33,7 @@ function buildSet(slug: string, title: string, category: string): FeatureEntityS
 export const featureEntitiesBySlug: Record<string, FeatureEntitySet> = Object.fromEntries(featureCatalog.map((feature) => {
   const slug = slugFromHref(feature.href); return [slug, buildSet(slug, feature.title, feature.category)];
 }));
+
+// Preserve the original operations API contract used by the governed smoke
+// journey while the UI labels this feature "Agent Test Lab".
+featureEntitiesBySlug.agents ??= buildSet('agents', 'Agent Test Lab', 'AI Operations');
